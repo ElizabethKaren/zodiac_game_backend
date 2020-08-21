@@ -11,6 +11,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :picture
       t.string :email
       t.string :password
+      t.string :sign
 
       t.timestamps
     end

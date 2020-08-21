@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_21_122844) do
+ActiveRecord::Schema.define(version: 2020_08_21_202531) do
 
   create_table "matches", force: :cascade do |t|
     t.integer "user_id"
@@ -19,11 +19,17 @@ ActiveRecord::Schema.define(version: 2020_08_21_122844) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.string "text"
+    t.integer "reciever_id"
+    t.integer "sender_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "signs", force: :cascade do |t|
     t.string "zodiac_sign"
     t.string "furtune"
-    t.string "compatable_signs"
-    t.string "celebs"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -39,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_08_21_122844) do
     t.string "picture"
     t.string "email"
     t.string "password"
+    t.string "sign"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
