@@ -10,13 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_09_155254) do
+ActiveRecord::Schema.define(version: 2020_08_21_122844) do
+
+  create_table "matches", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "sign_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "signs", force: :cascade do |t|
     t.string "zodiac_sign"
     t.string "furtune"
     t.string "compatable_signs"
     t.string "celebs"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "age"
+    t.string "bio"
+    t.string "location"
+    t.string "occupation"
+    t.string "college"
+    t.string "picture"
+    t.string "email"
+    t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
