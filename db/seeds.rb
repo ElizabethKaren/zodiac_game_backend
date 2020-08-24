@@ -16,7 +16,7 @@ Sign.create(zodiac_sign: 'Capricorn', furtune: 'Capricorn is a cardinal earth si
 Sign.create(zodiac_sign: 'Aquarius', furtune: 'Aquarius is a fixed air sign represented but he water-bearer.  The ancients attributed its rulership to the planet Saturn.  Aquarius is one of only two signs depicted as human figures.  Strangely enough, it is as if ‘Mankind’ itself is the archetype at work here.  They will have a large social sphere and it is important for them to be exchanging ideas with as varied a group as possible.  Aquarians are the futurists of the zodiac.  They are humanitarians interested in ways of improving mankind lot in general.  Interestingly, their compassion seems to be more general and less specific to individuals. The idea of groups people suffering upsets them, however on an individual basis they can be remote and somewhat cold.  As lovers they make good companions, pleasant company and are intellectually stimulating.  However they do not tend to be particularly sexual.  This may have to do with their ‘human’ archetype being less willing to get ‘down and dirty’ than other signs of the zodiac.  While the other air signs possess a capriciousness which could give one reason for caution, Aquarius is not typically fickle in the company they keep.')
 Sign.create(zodiac_sign: 'Pisces', furtune: "Pisces is a mutable water sign represented by two fish swimming in opposite directions.  It’s ruler is the planet Jupiter.  Some have said the two fish represent a ‘sink or swim’ quality they possess.  The expansiveness of Jupiter is connected to the spiritual instinct.  While the other two water signs possess armor (the crab shell or the scorpion’s exoskeleton) the fish lacks major defenses to protect its sensitivity.  This makes the walls between them an others very thin.  They are very intuitive and tend to pick up on feelings of those around them.  They can be pulled into beneficial or destructive company depending on the currents they move in.  There is a connection to the world of dream and a tendency to self medicate with drugs or alcohol.  As lovers they will give all of themselves.  The sex can take on a spiritual quality,  whereby they are transcending a more gross human state by total envelopment in the sensual ‘feels.")
 
-95.times do 
+50.times do 
     response = RestClient.get('https://randomuser.me/api/')
     data = JSON.parse(response)
     User.create(sign: Sign.all.sample.zodiac_sign, first_name: data["results"][0]["name"]["first"], last_name: data["results"][0]["name"]["last"], age: data["results"][0]["dob"]["age"], email: data["results"][0]["email"], location: data["results"][0]["location"]["city"], picture: data["results"][0]["picture"]["large"], password: data["results"][0]["login"]["password"], bio: Faker::TvShows::MichaelScott.quote, occupation: Faker::Job.title, college: Faker::University.name)
@@ -26,6 +26,6 @@ end
     Match.create(user_id: User.all.sample.id, sign_id: Sign.all.sample.id)
 end
 
-100.times do 
+200.times do 
     Message.create(text: Faker::Quotes::Shakespeare.as_you_like_it_quote, sender_id: User.all.sample.id, reciever_id: User.all.sample.id)
 end
